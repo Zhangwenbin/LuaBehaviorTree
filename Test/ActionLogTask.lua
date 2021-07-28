@@ -3,6 +3,6 @@ local this = ActionLogTask
 this.name = 'ActionLogTask'
 -- 模拟Behavior Designer Log节点
 function this:OnUpdate()
-	log('-----------ActionLogTask Success')
+	print('-----------ActionLogTask Success')
 	return BehTree.TaskStatus.Success
 end

@@ -1,5 +1,6 @@
-require 'BehaviorTree/Test/TestConditionalTask'
-require 'BehaviorTree/Test/ActionLogTask'
+require 'BehaviorTreeManager'
+require 'TestConditionalTask'
+require 'ActionLogTask'
 
 --[[
 代码拼接行为树有代码结构顺序要求，
@@ -37,6 +38,8 @@ local function BuildTree()
 	return root
 end
 
-return BuildTree()
+local tree= BuildTree()
+BehTree.BehaviorTreeManager.RunTree(tree)
+return tree
 
 

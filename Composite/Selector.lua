@@ -8,7 +8,7 @@ this.curReturnStatus = BehTree.TaskStatus.Inactive
 this.name = 'SelectorTask'
 function this:OnUpdate()
 	if self:HasChildren() == false then
-		logError(self.name..'父节点类型没有子节点！！')
+		print(self.name..'父节点类型没有子节点！！')
 		return BehTree.TaskStatus.Failure
 	end
 	if self.curRunTask == nil then
@@ -17,7 +17,7 @@ function this:OnUpdate()
 				--如下不该发生
 		if self.curRunTask == nil then
 			--如果没有子节点
-			logError('错误的节点配置！：没有子节点或已越界！！'..self.name..'子节点长度：'..self:GetChildCount()..'   尝试访问：'..self:GetCurChildIndex()+1)
+			print('错误的节点配置！：没有子节点或已越界！！'..self.name..'子节点长度：'..self:GetChildCount()..'   尝试访问：'..self:GetCurChildIndex()+1)
 			return BehTree.TaskStatus.Failure
 		end
 	end
@@ -30,7 +30,7 @@ function this:RunChildByOr()
 	while self.curRunTask ~= nil do
 		self.curReturnStatus = self.curRunTask:OnUpdate() --self.root:PushTask(self.curRunTask)
 		self.curRunTask:ResetTaskStatus()
-		--log('cur running task : '..'\n'..self.curRunTask:ToString())
+		--print('cur running task : '..'\n'..self.curRunTask:ToString())
 		----or机制：只要有一个true就中断执行,这一帧到此结束
 		if self.curReturnStatus == BehTree.TaskStatus.Success then
 			--返回Success说明这次Selector走完了，重置等下一轮

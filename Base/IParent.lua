@@ -34,16 +34,16 @@ end
 --对于ReaterTask等只能有一个子节点的
 function this:GetOnlyOneChild()
 	if self:GetChildCount() ~= 1 then
-		logError('---------'..self.name..'应该有且只有一个子节点！but：childCount:'..self:GetChildCount())
+		print('---------'..self.name..'应该有且只有一个子节点！but：childCount:'..self:GetChildCount())
 		return nil
 	end
 	return self.childTasks[1]
 end
 --添加子节点有顺序要求
 function this:AddChild(task)
-	log('------------------'..self.name..'  添加子节点 : '..task.name)
+	print('------------------'..self.name..'  添加子节点 : '..task.name)
 	if task == nil then
-		logError('---------------------add task is nil !!')
+		print('---------------------add task is nil !!')
 		return
 	end
 	local index = #self.childTasks+1
@@ -83,7 +83,7 @@ end
 --获取前一个子节点，不移动指针
 function this:GetCurPrivousTask()
 	if self.curChilIndex <=1 then
-		logError(self.name..' GetCurPrivousTask : 已经是最前的Task或childtask为空')
+		print(self.name..' GetCurPrivousTask : 已经是最前的Task或childtask为空')
 		return nil
 	else
 		return self.childTasks[self.curChilIndex-1]
@@ -92,7 +92,7 @@ end
 --获取下一个子节点，不移动指针
 function this:GetCurNextTask()
 	if self.curChilIndex >= #self.childTasks then
-		--logError(self.name..' GetCurNextTask : 已经是最后的Task或childtask为空')
+		--print(self.name..' GetCurNextTask : 已经是最后的Task或childtask为空')
 		return nil
 	else
 		return self.childTasks[self.curChilIndex+1]

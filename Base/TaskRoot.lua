@@ -4,7 +4,6 @@
 --2 composite（复合），--1,EntryParallel | 2,Selector | 3,Sequence
 --3 conditional（条件），
 --4 decorator（修饰符）！--Interrupt  Repeater  UntilSuccess
---5 action（行为）
 --可能很容易理解，因为他们在某种程度上改变游戏的状态和结果。 
 
 BehTree.TaskRoot = {
@@ -33,7 +32,7 @@ end
 function this:FindGlobalTask(tag)
 	local task = self.taskList[tostring(tag)]
 	if task == nil then
-		logError(self.name..' TaskRoot can not find task by tag: '..tag)
+		print(self.name..' TaskRoot can not find task by tag: '..tag)
 	end
 	return task
 end
@@ -48,7 +47,7 @@ end
 function this:GetGlobalParam(key)
 	local data = self.globalTable[key]
 	if data == nil then
-		logError('找不到全局参数：'..tostring(key))
+		print('找不到全局参数：'..tostring(key))
 	end
 	return data
 end
@@ -63,7 +62,7 @@ function this:ResetAllActionsState()
 			if type(task.isOnAction) == 'number' then
 				if task.isOnAction == 1 then
 					task.isOnAction = 2
-					log(task.name..' reset isOnAction == 2 ')
+					print(task.name..' reset isOnAction == 2 ')
 				end
 				
 			end

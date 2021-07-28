@@ -30,11 +30,11 @@ end
 --获取同一层layer的上一个节点
 function this:GetPriviousTask()
 	if self.parent == nil then
-		logError(self.name..' 找不到父节点 try call GetPriviousTask')
+		print(self.name..' 找不到父节点 try call GetPriviousTask')
 		return nil
 	end
 	if self.layer <= 1 then
-		logError(self.name..' GetPriviousTask已经是最顶层，单独Task')
+		print(self.name..' GetPriviousTask已经是最顶层，单独Task')
 		return nil
 	end
 	local priviousTask = self.parent:GetCurPrivousTask()
@@ -43,11 +43,11 @@ end
 --获取同一层layer下一个task
 function this:GetNextTask()
 	if self.parent == nil then
-		logError(self.name..' 找不到父节点 try call GetNextTask')
+		print(self.name..' 找不到父节点 try call GetNextTask')
 		return nil
 	end
 	if self.layer <= 1 then
-		logError(self.name..' GetNextTask已经是最顶层，单独Task')
+		print(self.name..' GetNextTask已经是最顶层，单独Task')
 		return nil
 	end
 	local nextTask = self.parent:GetCurNextTask()

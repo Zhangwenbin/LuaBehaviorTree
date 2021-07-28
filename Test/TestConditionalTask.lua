@@ -5,8 +5,8 @@ testt = {}
 idnex = 1
 --
 function this:OnUpdate()
-	log('----------TestConditionalTask---------Running')
-	log(self:ToString())
+	print('----------TestConditionalTask---------Running')
+	print(self:ToString())
 	--模拟Behavior Designer IsNullOrEmpty节点
 	--IsNullOrEmpty == false
 	return BehTree.TaskStatus.Failure

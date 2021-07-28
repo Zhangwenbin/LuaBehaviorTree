@@ -5,7 +5,7 @@ this.curReturnStatus = BehTree.TaskStatus.Inactive
 this.name = 'Sequence'
 function this:OnUpdate()
 	if self:HasChildren() == false then
-		logError(self.name..'父节点类型没有子节点！！')
+		print(self.name..'父节点类型没有子节点！！')
 		return BehTree.TaskStatus.Failure
 	end
 
@@ -15,7 +15,7 @@ function this:OnUpdate()
 				--如下不该发生
 		if self.curRunTask == nil then
 			--如果没有子节点
-			logError('错误的节点配置！：没有子节点或已越界！！'..self.name..'子节点长度：'..self:GetChildCount()..'   尝试访问：'..self:GetCurChildIndex()+1)
+			print('错误的节点配置！：没有子节点或已越界！！'..self.name..'子节点长度：'..self:GetChildCount()..'   尝试访问：'..self:GetCurChildIndex()+1)
 			return BehTree.TaskStatus.Failure
 		end
 	end

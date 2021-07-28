@@ -1,24 +1,24 @@
 BehTree={}
-require 'BehaviorTree/Base/Enum'
-require 'BehaviorTree/Base/StackList'
-require 'BehaviorTree/Base/TaskRoot'
-require 'BehaviorTree/Base/ITask'
-require 'BehaviorTree/Base/IParent'
-require 'BehaviorTree/Base/IAction'
-require 'BehaviorTree/Base/IComposite'
-require 'BehaviorTree/Base/IConditional'
-require 'BehaviorTree/Base/IDecorator'
+require 'Enum'
+require 'StackList'
+require 'TaskRoot'
+require 'ITask'
+require 'IParent'
+require 'IAction'
+require 'IComposite'
+require 'IConditional'
+require 'IDecorator'
 --复合节点（）
-require 'BehaviorTree/Composite/Selector'
-require 'BehaviorTree/Composite/Sequence'
+require 'Selector'
+require 'Sequence'
 --修饰节点
-require 'BehaviorTree/Decorator/Repeater'
-require 'BehaviorTree/Decorator/ReturnFailure'
-require 'BehaviorTree/Decorator/ReturnSuccess'
-require 'BehaviorTree/Decorator/UntilFailure'
-require 'BehaviorTree/Decorator/Inverter'
+require 'Repeater'
+require 'ReturnFailure'
+require 'ReturnSuccess'
+require 'UntilFailure'
+require 'Inverter'
 --Action节点
-require 'BehaviorTree/Action/Wait'
+require 'Wait'
 
 
 BehTree.BehaviorTreeManager={}
@@ -28,7 +28,6 @@ end
 --从这里开始启动一颗行为树的入口跟节点
 function this.RunTree(enter)
 	this.bhTree =enter
-	coroutine.start(this.OnUpdate)
 end
 
 --重置树下所有Action
@@ -38,15 +37,12 @@ function this.ResetTreeActions()
 end
 
 function this.OnUpdate() 
-	while true do
-		coroutine.step()
-		this.UpdateTask()
-	end
+	this.UpdateTask()
 end
 function this.UpdateTask()
 	local status = this.bhTree:OnUpdate()
+	print(status)
 	if status ~= BehTree.TaskStatus.Running then
-		table.remove(this.curTrees, key)
+		
 	end
-	
 end

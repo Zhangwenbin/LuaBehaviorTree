@@ -16,7 +16,7 @@ end
 
 function this:Pop()
 	if self.count < 1 then
-		logError('stack_list self.count is 0!!')
+		print('stack_list self.count is 0!!')
 		return
 	end
 	local pope = table.remove(self.stack_list, self.count)
@@ -50,9 +50,9 @@ end
 
 function this:ToString()
 	if self.count <= 0 then
-		logWarn('this self.Count is : 0')
+		print('this self.Count is : 0')
 	end
 	for k, v in pairs(self.stack_list) do
-		log('Stack 信息： key ：'..k..'   vale: '..tostring(v))
+		print('Stack 信息： key ：'..k..'   vale: '..tostring(v))
 	end
 end

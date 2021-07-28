@@ -37,7 +37,7 @@ function this:OnUpdate()
 		--self.curRunTask:ResetChildren()
 	end
 	if self.curRunTask == nil then
-		logError('-错误的行为树结构--------------'..self.name..' 获取子节点失败')
+		print('-错误的行为树结构--------------'..self.name..' 获取子节点失败')
 		return BehTree.TaskStatus.Failure
 	end
 	--<!=0无限次repeat，==0结束，>0倒数repeat
